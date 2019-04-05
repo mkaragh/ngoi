@@ -1,0 +1,9 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: APIGateway
+zuul:
+   routes:
+    ReceiveXcblOrder:
+                 url: http://receivexcblorder:8082

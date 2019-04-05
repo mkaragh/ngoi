@@ -1,0 +1,26 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: apigateway
+spec:
+  selector:
+    matchLabels:
+      app: apigateway
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: apigateway
+    spec:
+      containers:
+      - name: apigateway
+        image: mkadocker/apigateway
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8765
+          name: server
+        - containerPort: 8766
+          name: management
+        env:
+   
+        

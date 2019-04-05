@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apigateway
+spec:
+  ports:
+  - port: 8765
+    targetPort: 8765
+    name: http
+  - port: 8766
+    targetPort: 8766
+    name: management
+  selector:
+    app: apigateway
+  type: LoadBalancer

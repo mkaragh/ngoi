@@ -62,6 +62,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    /* (non-Javadoc)
+     * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.web.builders.HttpSecurity)
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -88,15 +91,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                     .antMatchers("/api/auth/signin")
                         .permitAll()
+                    .antMatchers("/api/auth/test")
+                        .permitAll()
+                    .antMatchers("/baeldung")
+                        .permitAll()                   
+                    .antMatchers("/baeldung.com")
+                        .permitAll()
                     .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
                         .permitAll()
                     .antMatchers(HttpMethod.GET, "/api/polls/**", "/api/users/**")
                         .permitAll()
                     .anyRequest()
                         .authenticated();
-
-        // Add our custom JWT security filter
-        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+//
+//        // Add our custom JWT security filter
+        	http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 }
