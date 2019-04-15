@@ -6,10 +6,8 @@
         <port>25826</port>
     <facility>LOCAL1</facility>
     <suffixPattern>[%thread] %logger %msg</suffixPattern>
-  </appender>
-
+  </appender
         <root level="INFO">             
                 <appender-ref ref="SYSLOG" />
         </root>
-
 </configuration>
