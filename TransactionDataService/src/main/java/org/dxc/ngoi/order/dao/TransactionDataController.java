@@ -34,6 +34,9 @@ public class TransactionDataController {
 		TransactionLog transactionLogUpdated = TransactionLogRepository.save(transactionLog);		
 		logger.info("Created TransactionLog", transactionLogUpdated);
 		return transactionLogUpdated;
+		
+		// actualy this should return the location of the new resource like 
+		// return ResponseEntity.created(location).build().
 	}
 	
 	@GetMapping(path="/all")
@@ -48,7 +51,7 @@ public class TransactionDataController {
                 .orElseThrow(() -> new TransactionLogNotFoundException("TransactionLog with id "+id+" not found"));
 		TransactionLogRepository.deleteById(id);
 		return ResponseEntity.ok().build();
-		
+		// or else throw is on Optional object
 	}
 	
 	@PutMapping("/update/{id}")

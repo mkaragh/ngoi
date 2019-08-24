@@ -21,8 +21,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 
 /**
- * Created by rajeevkumarsingh on 01/08/17.
- */
+ * Created by aravinda
+ * 
+ *  */
 
 @Configuration
 @EnableWebSecurity
@@ -92,16 +93,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/api/auth/signin")
                         .permitAll()
                     .antMatchers("/api/auth/signup")
-                        .permitAll()
-                    .antMatchers("/api/auth/test")
-                        .permitAll()
-                    .antMatchers("/baeldung")
-                        .permitAll()                   
-                    .antMatchers("/baeldung.com")
-                        .permitAll()
+                        .permitAll()                  
                     .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
-                        .permitAll()
-                    .antMatchers(HttpMethod.GET, "/api/polls/**", "/api/users/**")
                         .permitAll()
                     .anyRequest()
                         .authenticated();

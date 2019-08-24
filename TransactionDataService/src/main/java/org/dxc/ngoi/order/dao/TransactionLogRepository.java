@@ -10,7 +10,7 @@ public interface TransactionLogRepository extends JpaRepository<TransactionLog, 
 	@Query("update TransactionLog t set t.gsMsg = ?1 where t.messageId = ?2")
 	int setGsMsg(String gsMsg, String messageId);
 	
-	@Query("select t.gsMsg from TransactionLog t where t.gsMsg = ?1 ")
+	@Query("select t.gsMsg from TransactionLog t where t.messageId = ?1 ")
 	String getGsMag(String messageId);
 	
 

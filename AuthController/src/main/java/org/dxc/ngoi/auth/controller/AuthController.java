@@ -32,7 +32,7 @@ import java.net.URI;
 import java.util.Collections;
 
 /**
- * Created by rajeevkumarsingh on 02/08/17.
+ * Created by aravinda on 02/08/17.
  */
 @RestController
 @RequestMapping("/api/auth")
@@ -86,6 +86,8 @@ public class AuthController {
                 signUpRequest.getEmail(), signUpRequest.getPassword());
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        
+        //normal user ROLE_USER role can be assigned to others.
 
         Role userRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
                 .orElseThrow(() -> new AppException("User Role not set."));

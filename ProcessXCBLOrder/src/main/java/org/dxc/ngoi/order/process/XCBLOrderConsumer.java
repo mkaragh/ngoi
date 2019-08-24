@@ -14,6 +14,9 @@ public class XCBLOrderConsumer {
 	@Autowired
 	TransactionDataServiceClient transactionDataServiceClient;
 	
+	@Autowired
+	ProcessXCBLOrder processXCBLOrder;
+	
 	private final Logger logger = LoggerFactory.getLogger(XCBLOrderConsumer.class);
 
     @KafkaListener(topics = "${cloudkarafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
@@ -22,6 +25,10 @@ public class XCBLOrderConsumer {
         TransactionLog transactionLog = new TransactionLog();
         transactionLog.setRequestMsg(message);
         transactionLog.setReceivedDate("2019-03-22 16:06:40");
-        transactionDataServiceClient.addNewTransactionLog(transactionLog);  
+        transactionDataServiceClient.addNewTransactionLog(transactionLog);
+        
+        processXCBLOrder.processOrder(message);
+        
+        
     }
 }
