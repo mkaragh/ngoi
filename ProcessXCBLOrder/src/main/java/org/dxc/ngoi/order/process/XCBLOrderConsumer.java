@@ -19,7 +19,7 @@ public class XCBLOrderConsumer {
 	
 	private final Logger logger = LoggerFactory.getLogger(XCBLOrderConsumer.class);
 
-    @KafkaListener(topics = "${cloudkarafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
+    @KafkaListener(topics = "${xcblorder.topic}", groupId = "${spring.kafka.consumer.group-id}")
     public void consume(String message) throws IOException {
         logger.info(String.format("#### -> Consumed message -> %s", message));
         TransactionLog transactionLog = new TransactionLog();
